@@ -1,0 +1,31 @@
+- Solvers
+    -Timestepping
+        - Fixed timestep
+        - Variable timestep
+    - Approach
+        - ODE solver
+            - Radau
+            - ...
+        - Full matrix approach
+            - Scaling & squaring
+            - expmv
+            - CRAM, QRAM, ...
+        - Krylov projection
+            - Arnoldi (or limited)
+            - expm on projected matrix
+    - Dense or sparse linear algebra (should be option)
+
+- Problem
+    - Problem matrix + irradiation timesteps + reference solution at each step
+    - Need to be stored in data file (pytables? pandas?)
+    - Even for full matrices, store in ijk format
+
+- Test
+    - Combination of solver (including its options) and Problem
+
+- Test runner
+    - Runs a/many solvers on a/many problems
+    - Creates a test instance for each test
+    - Writes to a data file.
+    
+- Develop Jupyter notebook for visualisation
