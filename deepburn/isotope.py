@@ -275,7 +275,7 @@ def _zzzaaam2str(zzzaaam, symbol=True, zfirst=True, meta=True, separator="-"):
         ValueError: if zzzaaam is non-conformant
     """
 
-    if not isinstance(zzzaaam):
+    if not isinstance(zzzaaam, str):
         zzzaaam = str(zzzaaam)
 
     if len(zzzaaam) < 4 or len(zzzaaam) > 7:
