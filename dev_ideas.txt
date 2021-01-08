@@ -1,3 +1,5 @@
+# General considerations #
+
 - Solvers
     -Timestepping
         - Fixed timestep
@@ -19,6 +21,19 @@
     - Problem matrix + irradiation timesteps + reference solution at each step
     - Need to be stored in data file (pytables? pandas?)
     - Even for full matrices, store in ijk format
+    - Store metadata
+        - "Real" problem
+        - "Generated" problem → store generation parameters
+
+- Problem generator
+    - Ratio stable vs unstable
+    - Range for decay constants
+    - Distribution for decay constants (uniform, normal, ?) + list of "must
+      haves"
+    - We assume only "natural" decay paths
+    - Spontaneous fission or not
+    - Neutron flux or not → magnitude of neutron flux
+    - Fission yields
 
 - Test
     - Combination of solver (including its options) and Problem
@@ -28,4 +43,9 @@
     - Creates a test instance for each test
     - Writes to a data file.
     
-
+# Problem #
+- Matrix of size num_isotopes x num_isotopes (in ijk form)
+- timesteps (array of size num_timesteps)
+- reference solution (array of size num_isotopes x num_timesteps)
+- metadata
+  - Generated matrix

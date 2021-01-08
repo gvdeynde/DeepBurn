@@ -150,3 +150,32 @@ def test_str2zzzaam_exceptions_4():
 def test_str2zzzaam_exceptions_2():
     with pytest.raises(ValueError):
         isotope._str2zzzaaam("Alhambra241")
+
+
+def test_Isotope_constructor():
+    iso = isotope.Isotope(1, 1, 0)
+
+    assert iso.zzz == 1
+    assert iso.aaa == 1
+    assert iso.meta == 0
+
+
+def test_Isotope_namegenerator():
+    iso = isotope.Isotope(95, 241, 1)
+    assert iso.name == "Am-241m"
+
+
+def test_Isotope_exceptions():
+    iso = isotope.Isotope(1, 1, 1)
+
+    with pytest.raises(ValueError):
+        iso.zzz = 2
+
+    with pytest.raises(ValueError):
+        iso.aaa = 2
+
+    with pytest.raises(ValueError):
+        iso.meta = 2
+
+    with pytest.raises(ValueError):
+        iso.name = "test"

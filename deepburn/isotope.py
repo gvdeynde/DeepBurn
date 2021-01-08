@@ -297,7 +297,7 @@ def _zzzaaam2str(zzzaaam, symbol=True, zfirst=True, meta=True, separator="-"):
     if meta:
         metaname = metastable_state * "m"
     else:
-        metaname = ''
+        metaname = ""
 
     if zfirst:
         name = protonname + separator + massname + metaname
@@ -331,16 +331,12 @@ def _str2zzzaaam(name):
             try:
                 zzz = int(SYMBOLS.index(match[4]))
             except ValueError:
-                raise ValueError(
-                        f"I don't know element {match[4]}"
-                        )
+                raise ValueError(f"I don't know element {match[4]}")
         else:
             try:
                 zzz = int(ELEMENTS.index(match[4].title()))
             except ValueError:
-                raise ValueError(
-                        f"I don't know element {match[4]}"
-                        )
+                raise ValueError(f"I don't know element {match[4]}")
 
     else:
         match = RE_ZZZAAAM.match(name)
@@ -352,20 +348,14 @@ def _str2zzzaaam(name):
             try:
                 zzz = int(SYMBOLS.index(match[1]))
             except ValueError:
-                raise ValueError(
-                        f"I don't know element {match[1]}"
-                        )
+                raise ValueError(f"I don't know element {match[1]}")
         else:
             try:
                 zzz = int(ELEMENTS.index(match[1].title()))
             except ValueError:
-                raise ValueError(
-                        f"I don't know element {match[1]}"
-                        )
+                raise ValueError(f"I don't know element {match[1]}")
 
     return (zzz, aaa, m)
-    
-
 
 
 class Isotope:
@@ -375,3 +365,47 @@ class Isotope:
         self._zzz = zzz
         self._aaa = aaa
         self._meta = meta
+
+    @property
+    def zzz(self):
+        """ Returns the proton number """
+        return self._zzz
+
+    @zzz.setter
+    def zzz(self, value):
+        """ Read-only property """
+        raise ValueError("'zzz' is a read-only property")
+
+    @property
+    def aaa(self):
+        """ Returns the proton number """
+        return self._aaa
+
+    @aaa.setter
+    def aaa(self, value):
+        """ Read-only property """
+        raise ValueError("'aaa' is a read-only property")
+
+    @property
+    def meta(self):
+        """ Returns the proton number """
+        return self._meta
+
+    @meta.setter
+    def meta(self, value):
+        """ Read-only property """
+        raise ValueError("'meta' is a read-only property")
+
+    @property
+    def name(self):
+        zzzaaam = f"{self._zzz:3d}{self._aaa:3d}{self._meta:1d}"
+        print(self._zzz)
+        print(self._aaa)
+        print(self._meta)
+        print(zzzaaam)
+        return _zzzaaam2str(zzzaaam)
+
+    @name.setter
+    def name(self, value):
+        """ Read-only property """
+        raise ValueError("'name' is a read-only property")
